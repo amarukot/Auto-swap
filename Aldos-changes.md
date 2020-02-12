@@ -9,4 +9,4 @@
 2. Styling -
 
 - css styling not being applied. file was misplaced inside templates folder, moved to main folder under static/css.
-- restyled seller detail page.
+- restyled seller detail page. just moved Seller name below image of seller.
