@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Car, Seller
-from .forms import CarForm, SellerForm, ImageUploadForm
+from .forms import CarForm, SellerForm
 from django.http import HttpResponseForbidden
 
 
@@ -68,7 +68,11 @@ def car_create(request):
 def car_update(request, id):
     car = Car.objects.get(id=id)
     if request.method == 'POST':
+<<<<<<< HEAD
         form = CarForm(request.POST, request.FILES, instance=car)
+=======
+        form = CarForm(request.POST, request.FILES, instance = car)
+>>>>>>> b35cae5f72fee0400fe7b49ec598a4c4272b1971
         if form.is_valid:
             car = form.save()
             return redirect('car_detail', id=car.id)
@@ -83,6 +87,7 @@ def car_delete(request, id):
     return redirect('car_list')
 
 
+<<<<<<< HEAD
 def upload_pic(request):
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
@@ -93,3 +98,15 @@ def upload_pic(request):
             # return redirect('car_detail', id = car.id)
             return HttpResponse('image upload success')
     return HttpResponseForbidden('allowed only via POST')
+=======
+# def upload_pic(request):
+#     if request.method == 'POST':
+#         form = ImageUploadForm(request.POST, request.FILES)
+#         if form.is_valid:
+#             car.img_url = form.cleaned_data['image']
+#             car=form.save()
+#             return HttpResponse('image upload success')
+#     return HttpResponseForbidden('allowed only via POST')
+
+
+>>>>>>> b35cae5f72fee0400fe7b49ec598a4c4272b1971

@@ -20,9 +20,11 @@ psycopg2.errors.StringDataRightTruncation: value too long for type character var
 _images not appeared in the main page
 
 ### solution
+Doc : https://docs.djangoproject.com/en/2.1/howto/static-files/#serving-files-uploaded-by-a-user-during-development
 
 In settings, add MEDIA_URL and MEDIA_ROOT
 ```
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 ```
@@ -36,4 +38,36 @@ Then add this at the end of the urlpattern_array
 ```
 + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
+
+Comment out all code related to upload route: uploadForm, upload in url, views.
+
+Add request.FILES in views
+```
+if request.method == 'POST':
+        form = CarForm(request.POST, request.FILES, instance = car)
+```
+
+In the form.html, include enctype
+```
+<form method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ form.as_p }}
+</form>
+```
+
+Image should be in static/media/ + upload_to(from Car model imageField)
+```
+In this case, it should be in static/media/pic_folder
+```
+
+Finally, in car_list, car_detail.html, add .url for the image
+```
+before 
+<img src="{{car.img_url}}" alt="Picture of {{car.model}}" />
+
+after
+<img src="{{car.img_url.url}}" alt="Picture of {{car.model}}" />
+```
+
+
 

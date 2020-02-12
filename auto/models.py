@@ -14,7 +14,7 @@ class Car(models.Model):
   make = models.CharField(default='', max_length=200)
   model = models.CharField(default = '', max_length= 500)
   trim = models.CharField(default = '', max_length= 500)
-  img_url = models.ImageField(upload_to = 'pic_folder/', default = 'pic_folder/None/no-img.jpg',max_length= 500)
+  img_url = models.ImageField(upload_to = 'pic_folder/', default = 'pic_folder/None/no-img.jpg',max_length= 500, unique=True)
   milage = models.CharField(default = '', max_length= 500)
   color = models.CharField(default = '', max_length= 500)
   name = models.ForeignKey(Seller, on_delete = models.CASCADE, related_name = 'car')

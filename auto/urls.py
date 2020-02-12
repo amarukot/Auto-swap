@@ -15,5 +15,5 @@ urlpatterns = [
     path('car/new', views.car_create, name = 'car_create'),
     path('car/<int:id>/edit', views.car_update, name = 'car_edit'),
     path('car/<int:id>/delete', views.car_delete, name = 'car_delete'),
-    path('upload/', views.upload_pic, name = 'upload_pic'),
+    # path('upload/', views.upload_pic, name = 'upload_pic'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

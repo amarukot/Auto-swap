@@ -5,7 +5,7 @@ class CarForm(forms.ModelForm):
 
     class Meta:
         model = Car
-        fields = ('make','model', 'trim', 'milage', 'color','name')
+        fields = ('make','model', 'img_url','trim', 'milage', 'color','name')
 
 class SellerForm(forms.ModelForm):
 
@@ -13,5 +13,5 @@ class SellerForm(forms.ModelForm):
         model = Seller
         fields = ('name', 'phone', 'address','web_site', 'logo')
 
-class ImageUploadForm(forms.Form):
-       image = ('img_url')
+# class ImageUploadForm(forms.Form):
+#        image = ('img_url')
